@@ -93,18 +93,38 @@
 
       function pickerCallback(data) {
         if (!data || !window.Android) return;
-        var action = data[google.picker.Response.ACTION];
-        if (action === google.picker.Action.PICKED) {
-          var docs = data[google.picker.Response.DOCUMENTS] || [];
+
+        // Picker may use either the documented constant keys
+        // (google.picker.Response.ACTION) or plain string keys ('action'/'docs').
+        // Read both for forward/backward compatibility.
+        var action = data[google.picker.Response.ACTION] || data.action;
+        var pickedAction = (google.picker.Action && google.picker.Action.PICKED) || 'picked';
+        var cancelAction = (google.picker.Action && google.picker.Action.CANCEL) || 'cancel';
+
+        if (action === pickedAction) {
+          var docs = data[google.picker.Response.DOCUMENTS] || data.docs || [];
           var file = docs[0];
           if (file) {
-            var id = file[google.picker.Document.ID] || '';
-            var name = file[google.picker.Document.NAME] || '';
-            window.Android.onFilePicked(id, name);
+            // Prefer plain field names (always populated); fall back to constants.
+            var id = file.id
+                  || (google.picker.Document && file[google.picker.Document.ID])
+                  || '';
+            var name = file.name
+                  || (google.picker.Document && file[google.picker.Document.NAME])
+                  || '';
+            if (id) {
+              window.Android.onFilePicked(id, name);
+            } else {
+              if (window.Android.onPickerError) {
+                window.Android.onPickerError('Picked file has no id. Raw: ' + JSON.stringify(file).slice(0, 200));
+              } else {
+                window.Android.onPickerCancelled();
+              }
+            }
           } else {
             window.Android.onPickerCancelled();
           }
-        } else if (action === google.picker.Action.CANCEL) {
+        } else if (action === cancelAction) {
           window.Android.onPickerCancelled();
         }
       }

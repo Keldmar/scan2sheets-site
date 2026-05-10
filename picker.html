@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick a spreadsheet</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      font-family: -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    }
+    #status {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="status">Loading Google Picker…</div>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var oauthToken = params.get('token') || '';
+      var apiKey = params.get('apiKey') || '';
+      var appId = params.get('appId') || '';
+
+      function reportError(message) {
+        var el = document.getElementById('status');
+        if (el) { el.textContent = message; }
+        if (window.Android && window.Android.onPickerError) {
+          window.Android.onPickerError(message);
+        }
+      }
+
+      function loadPicker() {
+        if (typeof gapi === 'undefined') {
+          reportError('Google API failed to load. Check your internet connection.');
+          return;
+        }
+        try {
+          gapi.load('picker', {
+            callback: createPicker,
+            onerror: function () { reportError('Failed to load Picker module.'); },
+            timeout: 15000,
+            ontimeout: function () { reportError('Loading Google Picker timed out.'); }
+          });
+        } catch (e) {
+          reportError('Picker init error: ' + (e && e.message ? e.message : e));
+        }
+      }
+
+      function createPicker() {
+        if (!oauthToken) {
+          reportError('Missing OAuth token.');
+          return;
+        }
+        try {
+          var view = new google.picker.View(google.picker.ViewId.SPREADSHEETS);
+          view.setMimeTypes('application/vnd.google-apps.spreadsheet');
+
+          var builder = new google.picker.PickerBuilder()
+            .setOAuthToken(oauthToken)
+            .addView(view)
+            .setOrigin('https://scan2sheets.app')
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            .setCallback(pickerCallback);
+
+          if (appId) {
+            builder.setAppId(appId);
+          }
+          if (apiKey) {
+            builder.setDeveloperKey(apiKey);
+          }
+
+          var picker = builder.build();
+          picker.setVisible(true);
+          var statusEl = document.getElementById('status');
+          if (statusEl) statusEl.style.display = 'none';
+        } catch (e) {
+          reportError('Picker create error: ' + (e && e.message ? e.message : e));
+        }
+      }
+
+      function pickerCallback(data) {
+        if (!data || !window.Android) return;
+        var action = data[google.picker.Response.ACTION];
+        if (action === google.picker.Action.PICKED) {
+          var docs = data[google.picker.Response.DOCUMENTS] || [];
+          var file = docs[0];
+          if (file) {
+            var id = file[google.picker.Document.ID] || '';
+            var name = file[google.picker.Document.NAME] || '';
+            window.Android.onFilePicked(id, name);
+          } else {
+            window.Android.onPickerCancelled();
+          }
+        } else if (action === google.picker.Action.CANCEL) {
+          window.Android.onPickerCancelled();
+        }
+      }
+
+      loadPicker();
+    })();
+  </script>
+</body>
+</html>

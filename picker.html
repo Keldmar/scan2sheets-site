@@ -33,6 +33,7 @@
       var oauthToken = params.get('token') || '';
       var apiKey = params.get('apiKey') || '';
       var appId = params.get('appId') || '';
+      var userEmail = params.get('email') || '';
 
       function reportError(message) {
         var el = document.getElementById('status');
@@ -81,6 +82,9 @@
           if (apiKey) {
             builder.setDeveloperKey(apiKey);
           }
+          if (userEmail && typeof builder.setAuthUser === 'function') {
+            builder.setAuthUser(userEmail);
+          }
 
           var picker = builder.build();
           picker.setVisible(true);
@@ -94,9 +98,6 @@
       function pickerCallback(data) {
         if (!data || !window.Android) return;
 
-        // Picker may use either the documented constant keys
-        // (google.picker.Response.ACTION) or plain string keys ('action'/'docs').
-        // Read both for forward/backward compatibility.
         var action = data[google.picker.Response.ACTION] || data.action;
         var pickedAction = (google.picker.Action && google.picker.Action.PICKED) || 'picked';
         var cancelAction = (google.picker.Action && google.picker.Action.CANCEL) || 'cancel';
@@ -105,7 +106,6 @@
           var docs = data[google.picker.Response.DOCUMENTS] || data.docs || [];
           var file = docs[0];
           if (file) {
-            // Prefer plain field names (always populated); fall back to constants.
             var id = file.id
                   || (google.picker.Document && file[google.picker.Document.ID])
                   || '';

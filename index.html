@@ -1,61 +1,1057 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scan2Sheets — Digitize records straight into Google Sheets</title>
-  <meta name="description" content="Scan2Sheets is a mobile app that captures printed and handwritten records with the camera and writes the recognized data directly into your Google Sheets.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scan2Sheets — Turn Your Phone into a Professional Data Terminal</title>
+  <meta name="description" content="Scan barcodes & QR codes directly into your Google Sheets in real time. Fast, customizable, and 100% offline-first inventory & stock management for Android." />
+  <meta name="theme-color" content="#0F0C1A" />
+
+  <link rel="canonical" href="https://scan2sheets.app/" />
+  <meta name="keywords" content="barcode scanner google sheets, qr scanner google sheets, inventory management, offline barcode scanner, scan to sheets, stock tracker android, sheets inventory scanner" />
+  <meta name="author" content="Oleksandr" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://scan2sheets.app/" />
+  <meta property="og:site_name" content="Scan2Sheets" />
+  <meta property="og:title" content="Scan2Sheets — Turn Your Phone into a Professional Data Terminal" />
+  <meta property="og:description" content="Direct-to-Google-Sheets barcode & QR scanner. Offline-first, customizable columns, zero data loss." />
+  <meta property="og:image" content="https://scan2sheets.app/assets/hero.png" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="1920" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Scan2Sheets — Professional Barcode & QR Terminal for Google Sheets" />
+  <meta name="twitter:description" content="Scan barcodes & QR codes directly into your Google Sheets in real time with 100% offline-first reliability." />
+  <meta name="twitter:image" content="https://scan2sheets.app/assets/hero.png" />
+
+  <!-- Structured Data (JSON-LD) for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Scan2Sheets",
+    "operatingSystem": "Android",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://scan2sheets.app",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.sheetscan.app",
+    "description": "Android barcode and QR scanner syncing directly with Google Sheets. Offline-first, customizable schema, and real-time inventory management.",
+    "image": "https://scan2sheets.app/assets/hero.png",
+    "screenshot": "https://scan2sheets.app/assets/hero.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Oleksandr"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
   <style>
-    :root { color-scheme: light dark; }
-    * { box-sizing: border-box; }
+    :root {
+      --bg-dark: #0F0C1A;
+      --bg-card: #181424;
+      --bg-card-hover: #211B33;
+      --surface-variant: #231D38;
+      --border-color: #2C2642;
+      --border-accent: rgba(179, 157, 250, 0.25);
+      --primary: #B39DFA;
+      --primary-accent: #7B52E8;
+      --secondary-green: #7EC891;
+      --secondary-dark-green: #1A4D2A;
+      --amber-gold: #F5C142;
+      --text-main: #FAFAFF;
+      --text-muted: #C9C4D4;
+      --text-subtle: #8E88A0;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3rem 1.25rem 4rem;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       line-height: 1.6;
-      color: #1a1a1a;
-      background: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    @media (prefers-color-scheme: dark) {
-      body { color: #e6e6e6; background: #0d0d0d; }
-      a { color: #6cb4ff; }
+
+    /* Ambient Background Glows */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
-    h1 { font-size: 2.25rem; margin: 0 0 .5rem; letter-spacing: -0.02em; }
-    .tagline { font-size: 1.15rem; color: #666; margin: 0 0 2.5rem; }
-    @media (prefers-color-scheme: dark) { .tagline { color: #aaa; } }
-    h2 { margin-top: 2.5rem; }
-    ul { padding-left: 1.25rem; }
-    li { margin-bottom: .35rem; }
-    footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-size: .9rem; color: #777; }
-    @media (prefers-color-scheme: dark) { footer { border-color: #333; color: #999; } }
-    a { color: #0a66c2; }
+    .glow-1 {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 750px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.22) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(60px);
+    }
+    .glow-2 {
+      position: absolute;
+      top: 45%;
+      right: -150px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(126, 200, 145, 0.12) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+    .glow-3 {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.15) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+
+    /* Layout Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(15, 12, 26, 0.75);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #7B52E8 0%, #3D8C52 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(123, 82, 232, 0.4);
+    }
+
+    .logo-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #7B52E8 0%, #6032D6 100%);
+      color: #fff;
+      padding: 0.55rem 1.15rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(123, 82, 232, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(123, 82, 232, 0.5);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-accent);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--secondary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--secondary-green);
+    }
+
+    .hero-title {
+      font-size: 3.25rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #FAFAFF 30%, #B39DFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2.25rem;
+      max-width: 560px;
+    }
+
+    /* CTA Area with Play Store button & QR */
+    .cta-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .playstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: #000000;
+      border: 1px solid var(--border-accent);
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-md);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .playstore-btn:hover {
+      background: #110e1e;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(123, 82, 232, 0.35);
+    }
+
+    .playstore-btn svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .playstore-btn-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .playstore-btn-text .subtitle {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #A59FB5;
+      font-weight: 600;
+    }
+
+    .playstore-btn-text .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #FAFAFF;
+      line-height: 1.2;
+    }
+
+    /* Desktop QR card */
+    .qr-badge-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    .qr-badge-card img {
+      width: 52px;
+      height: 52px;
+      border-radius: 6px;
+      background: #181424;
+    }
+
+    .qr-badge-info {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .qr-badge-info strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    /* Hero Media Display */
+    .hero-media-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-media-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 8px;
+      background: linear-gradient(135deg, rgba(179, 157, 250, 0.3) 0%, rgba(44, 38, 66, 0.4) 50%, rgba(126, 200, 145, 0.3) 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(123, 82, 232, 0.25);
+      transition: transform 0.3s ease;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .hero-media-card:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .hero-media-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius-lg) - 4px);
+    }
+
+    /* Key Value Stats Bar */
+    .stats-bar {
+      margin: 1rem 0 5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .stat-text h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Section Headings */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-tag {
+      color: var(--secondary-green);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: 4rem 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 5rem 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      position: relative;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--primary-accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 16px rgba(123, 82, 232, 0.5);
+    }
+
+    .step-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* App Mode Highlight Banner */
+    .modes-banner {
+      margin: 4rem 0;
+      background: linear-gradient(135deg, #1C1630 0%, #131E24 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .mode-box {
+      background: rgba(15, 12, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+    }
+
+    .mode-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge-quick {
+      background: rgba(126, 200, 145, 0.15);
+      color: var(--secondary-green);
+      border: 1px solid rgba(126, 200, 145, 0.3);
+    }
+
+    .badge-edit {
+      background: rgba(179, 157, 250, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(179, 157, 250, 0.3);
+    }
+
+    .mode-box h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .mode-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 0 6rem;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+    }
+
+    .faq-item h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .faq-item p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Bottom CTA Section */
+    .bottom-cta {
+      background: linear-gradient(180deg, rgba(24, 20, 36, 0) 0%, rgba(35, 29, 56, 0.6) 100%);
+      border-top: 1px solid var(--border-color);
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+
+    .bottom-cta h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .bottom-cta p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #0A0812;
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      color: var(--text-subtle);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+      }
+      .hero-subtitle {
+        margin: 0 auto 2rem;
+      }
+      .cta-wrapper {
+        justify-content: center;
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .features-grid, .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .modes-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2.35rem;
+      }
+      .stats-bar {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .qr-badge-card {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Scan2Sheets</h1>
-  <p class="tagline">Digitize printed and handwritten records straight into your Google Sheets.</p>
 
-  <h2>What it does</h2>
-  <p>Scan2Sheets is a mobile application that lets you capture printed or handwritten records with your device camera and write the recognized data directly into your own Google Sheets spreadsheets — no manual typing, no copy-paste between apps.</p>
+  <!-- Ambient Light Accents -->
+  <div class="ambient-glow">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="glow-3"></div>
+  </div>
 
-  <h2>How it works</h2>
-  <ul>
-    <li>Sign in with your Google account.</li>
-    <li>Pick an existing spreadsheet from your Google Drive, or create a new one inside the app.</li>
-    <li>Point the camera at a document — the app recognizes the text and prepares a row for review.</li>
-    <li>Confirm or correct the data — the app appends a new row to your spreadsheet.</li>
-  </ul>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h4v4H4V4zm6 0h4v2h-4V4zm6 0h4v4h-4V4zM4 10h2v4H4v-4zm14 0h2v4h-2v-4zM4 16h4v4H4v-4zm6 2h4v2h-4v-2zm6-2h4v4h-4v-4zm-4-6h2v2h-2v-2z"/>
+            </svg>
+          </div>
+          <span>Scan2Sheets</span>
+        </a>
 
-  <h2>Privacy</h2>
-  <p>Scan2Sheets only accesses the Google Sheets you explicitly select. Your captured images are processed locally on your device and are not uploaded to any server.</p>
-  <p>Read the full <a href="/privacy.html">Privacy Policy</a>.</p>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
 
-  <h2>Contact</h2>
-  <p>Questions, feedback, or support requests: <a href="mailto:yahnencko.sasha@gmail.com">yahnencko.sasha@gmail.com</a></p>
+        <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          <span>Download App</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Main Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>Official Android Release</span>
+        </div>
+
+        <h1 class="hero-title">
+          Your Phone is a <span class="gradient-text">Professional Data Terminal</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Scan QR & barcodes directly into your <strong>Google Sheets</strong> in real-time. Built for rapid inventory counting, stock taking, retail logistics, and automated logging with zero cloud lock-in.
+        </p>
+
+        <div class="cta-wrapper">
+          <!-- Official Google Play CTA -->
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+            <svg viewBox="0 0 512 512">
+              <path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/>
+              <path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/>
+              <path fill="#EA4335" d="M354.1 328.8L276.7 251.4 47.8 480.3c8.5 9 22.4 10.1 38.3 1.1l268-152.6"/>
+              <path fill="#34A853" d="M354.1 173.2L86.1 20.6C70.2 11.6 56.3 12.7 47.8 21.7l228.9 228.9 77.4-77.4z"/>
+            </svg>
+            <div class="playstore-btn-text">
+              <span class="subtitle">GET IT ON</span>
+              <span class="title">Google Play</span>
+            </div>
+          </a>
+
+          <!-- QR Code Badge for Desktop Users -->
+          <div class="qr-badge-card">
+            <img src="/assets/playstore-qr.svg" alt="Scan QR code to install from Google Play" />
+            <div class="qr-badge-info">
+              <strong>Scan to install</strong>
+              <span>Open on your phone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Graphic -->
+      <div class="hero-media-wrapper">
+        <div class="hero-media-card">
+          <img src="/assets/hero.png" alt="Scan2Sheets — Mobile barcode scanner synced directly with Google Sheets" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Stats & Trust Indicators -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-text">
+          <h4>Instant Sync</h4>
+          <p>Real-time Google Sheets API update</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">📴</div>
+        <div class="stat-text">
+          <h4>100% Offline-First</h4>
+          <p>Room DB cache with auto-sync queue</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🔒</div>
+        <div class="stat-text">
+          <h4>Direct & Private</h4>
+          <p>Zero third-party database middleman</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🌐</div>
+        <div class="stat-text">
+          <h4>8 Languages</h4>
+          <p>Full RTL & multi-locale support</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Features Section -->
+    <section id="features" class="features-section">
+      <div class="section-header">
+        <span class="section-tag">Powerful Features</span>
+        <h2 class="section-title">Designed for Fast & Accurate Stock Audits</h2>
+        <p class="section-desc">Turn your smartphone camera into a reliable industrial scanner with zero complex hardware needed.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">📷</div>
+          <h3>Lightning-Fast Scanning</h3>
+          <p>Powered by Google ML Kit and CameraX. Instantly decodes QR codes, EAN-13, UPC, Code 128, and Data Matrix with custom scan zones and haptic feedback.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">📊</div>
+          <h3>Custom Schema Builder</h3>
+          <p>Map barcode values to any column. Add editable number steppers, text fields, dropdown choices, and automatic ISO timestamp columns.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">💾</div>
+          <h3>Zero Data-Loss Sync</h3>
+          <p>Work without Wi-Fi or cellular service. All edits and scans are stored locally and merge automatically with Google Sheets once reconnected.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">🔄</div>
+          <h3>Two Optimized Modes</h3>
+          <p>Switch between continuous <strong>Quick Add</strong> (for rapid item registration) and <strong>View & Edit</strong> (for detailed quantity adjustment and deletion).</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">📁</div>
+          <h3>Native Drive Picker</h3>
+          <p>Select any spreadsheet from your personal or shared Google Drive with one tap, or create a brand new template directly inside the app.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">🛡️</div>
+          <h3>Complete Privacy</h3>
+          <p>Only accesses the spreadsheets you explicitly choose. Images are processed on-device and never uploaded to external servers.</p>
+        </div>
+      </div>
+
+      <!-- Mode Comparison Banner -->
+      <div class="modes-banner">
+        <div class="mode-box">
+          <span class="mode-badge badge-quick">Speed Mode</span>
+          <h4>Quick Add Bottom Sheet</h4>
+          <p>Scans without leaving the camera viewfinder. Shows an inline sheet on top of the preview to confirm or edit values in seconds for serial batching.</p>
+        </div>
+        <div class="mode-box">
+          <span class="mode-badge badge-edit">Control Mode</span>
+          <h4>View & Edit Details</h4>
+          <p>Navigates to an item inspector with instant search across all rows, numerical increment/decrement steppers, auto-timestamps, and row deletion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="section-header">
+        <span class="section-tag">Simple Workflow</span>
+        <h2 class="section-title">Up and Running in 3 Steps</h2>
+        <p class="section-desc">No complicated server setup or database configuration. Just connect your spreadsheet and start scanning.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Connect Your Google Sheet</h3>
+          <p>Sign in with your Google account and select any existing spreadsheet or let Scan2Sheets create a clean inventory template for you.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Configure Your Columns</h3>
+          <p>Select which column stores the barcode identifier, and customize which fields you want to track (Quantity, Item Name, Price, Timestamp).</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Scan & Auto-Sync</h3>
+          <p>Point the camera at any item. When scanned, existing rows update or new entries are appended directly to your live Google Sheet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+      <div class="section-header">
+        <span class="section-tag">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>Is Scan2Sheets free to use?</h4>
+          <p>Yes! Scan2Sheets is completely free without intrusive paywalls or ads. If you love the app and want to support ongoing development, voluntary supporter plans are available inside the app.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Does it work without an internet connection?</h4>
+          <p>Absolutely. Scan2Sheets is built with an offline-first architecture (Room Database). You can scan in warehouses, basements, or offline areas; all records will queue and sync seamlessly when you're back online.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>How is my Google data protected?</h4>
+          <p>The app communicates directly with Google's official Sheets & Drive APIs via scoped permissions. We do not run intermediate databases, and your data remains strictly between your device and your Google Account.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>What barcode types are supported?</h4>
+          <p>QR Code, EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, Code 93, Codabar, ITF, and Data Matrix.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom CTA Banner -->
+  <section class="bottom-cta">
+    <div class="container">
+      <h2>Start Streamlining Your Inventory Today</h2>
+      <p>Download Scan2Sheets for Android and connect your physical products to Google Sheets in seconds.</p>
+
+      <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+        <svg viewBox="0 0 512 512">
+          <path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/>
+          <path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/>
+          <path fill="#EA4335" d="M354.1 328.8L276.7 251.4 47.8 480.3c8.5 9 22.4 10.1 38.3 1.1l268-152.6"/>
+          <path fill="#34A853" d="M354.1 173.2L86.1 20.6C70.2 11.6 56.3 12.7 47.8 21.7l228.9 228.9 77.4-77.4z"/>
+        </svg>
+        <div class="playstore-btn-text">
+          <span class="subtitle">GET IT ON</span>
+          <span class="title">Google Play</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2026 Scan2Sheets. Developed by Oleksandr.
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <strong>Scan2Sheets</strong> &copy; 2026. All rights reserved.
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="mailto:yahnencko.sasha@gmail.com">Contact Support</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>

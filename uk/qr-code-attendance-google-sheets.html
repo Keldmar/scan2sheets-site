@@ -6,6 +6,7 @@
   <title>Облік відвідуваності та реєстрація за QR-кодом у Google Таблицях | SheetScan</title>
   <meta name="description" content="Фіксуйте відвідувачів заходів, реєстрацію студентів або прихід працівників за QR-кодами безпосередньо в Google Таблицях. Швидке мобільне сканування з фіксацією точного часу." />
   <meta name="theme-color" content="#0F0C1A" />
+  <meta name="google-site-verification" content="l_DCAVC1ZjNH4PBwGRF1wwJ4GbD1l4B45DbPYoK3d3U" />
 
   <link rel="canonical" href="https://scan2sheets.app/uk/qr-code-attendance-google-sheets.html" />
   <link rel="alternate" hreflang="en" href="https://scan2sheets.app/qr-code-attendance-google-sheets.html" />
@@ -29,6 +30,16 @@
   <meta name="twitter:title" content="Облік відвідуваності та реєстрація за QR-кодом у Google Таблицях | SheetScan" />
   <meta name="twitter:description" content="Фіксуйте відвідувачів заходів, реєстрацію студентів або прихід працівників за QR-кодами безпосередньо в Google Таблицях. Швидке мобільне сканування з фіксацією точного часу." />
   <meta name="twitter:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68PBXWT4SV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-68PBXWT4SV');
+  </script>
 
   <script type="application/ld+json">
   {
@@ -897,5 +908,33 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyBtns = document.querySelectorAll('.btn-copy-template');
+      copyBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'copy_template', {
+              'event_category': 'template',
+              'event_label': window.location.pathname
+            });
+          }
+        });
+      });
+
+      var playLinks = document.querySelectorAll('a[href*="play.google.com"]');
+      playLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'click_google_play', {
+              'event_category': 'conversion',
+              'event_label': window.location.pathname
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

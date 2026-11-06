@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Asistencia y Registro con Códigos QR en Google Sheets | SheetScan</title>
+  <meta name="description" content="Registra la asistencia a eventos, clases y control horario de empleados con códigos QR directamente en Google Sheets. Escaneo rápido con móvil y fecha/hora automática." />
+  <meta name="theme-color" content="#0F0C1A" />
+
+  <link rel="canonical" href="https://scan2sheets.app/es/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="en" href="https://scan2sheets.app/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/qr-code-attendance-google-sheets.html" />
+  <link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/qr-code-attendance-google-sheets.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://scan2sheets.app/es/qr-code-attendance-google-sheets.html" />
+  <meta property="og:site_name" content="SheetScan / Scan2Sheets" />
+  <meta property="og:title" content="Control de Asistencia y Registro con Códigos QR en Google Sheets | SheetScan" />
+  <meta property="og:description" content="Registra la asistencia a eventos, clases y control horario de empleados con códigos QR directamente en Google Sheets. Escaneo rápido con móvil y fecha/hora automática." />
+  <meta property="og:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="500" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Control de Asistencia y Registro con Códigos QR en Google Sheets | SheetScan" />
+  <meta name="twitter:description" content="Registra la asistencia a eventos, clases y control horario de empleados con códigos QR directamente en Google Sheets. Escaneo rápido con móvil y fecha/hora automática." />
+  <meta name="twitter:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SheetScan: Barcode to Sheets",
+    "operatingSystem": "Android",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://scan2sheets.app",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.sheetscan.app",
+    "description": "Registra la asistencia a eventos, clases y control horario de empleados con códigos QR directamente en Google Sheets. Escaneo rápido con móvil y fecha/hora automática.",
+    "image": "https://scan2sheets.app/assets/feature-graphic.png",
+    "screenshot": "https://scan2sheets.app/assets/screenshot-1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "120"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+
+    :root {
+      --bg-dark: #0F0C1A;
+      --bg-card: #181424;
+      --bg-card-hover: #211B33;
+      --surface-variant: #231D38;
+      --border-color: #2C2642;
+      --border-accent: rgba(179, 157, 250, 0.25);
+      --primary: #B39DFA;
+      --primary-accent: #7B52E8;
+      --secondary-green: #7EC891;
+      --secondary-dark-green: #1A4D2A;
+      --amber-gold: #F5C142;
+      --text-main: #FAFAFF;
+      --text-muted: #C9C4D4;
+      --text-subtle: #8E88A0;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-1 {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 750px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.22) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(60px);
+    }
+    .glow-2 {
+      position: absolute;
+      top: 45%;
+      right: -150px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(126, 200, 145, 0.12) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+    .glow-3 {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.15) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(15, 12, 26, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #7B52E8 0%, #3D8C52 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(123, 82, 232, 0.4);
+    }
+
+    .logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-switcher a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0 0.2rem;
+      font-weight: 600;
+    }
+    .lang-switcher a:hover, .lang-switcher a.active {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #7B52E8 0%, #6032D6 100%);
+      color: #fff;
+      padding: 0.55rem 1.15rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(123, 82, 232, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(123, 82, 232, 0.5);
+    }
+
+    .hero {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-accent);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--secondary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--secondary-green);
+    }
+
+    .hero-title {
+      font-size: 3.1rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #FAFAFF 30%, #B39DFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+
+    .cta-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .playstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: #000000;
+      border: 1px solid var(--border-accent);
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-md);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .playstore-btn:hover {
+      background: #110e1e;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(123, 82, 232, 0.35);
+    }
+
+    .playstore-btn svg { width: 32px; height: 32px; flex-shrink: 0; }
+
+    .playstore-btn-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .playstore-btn-text .subtitle {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #A59FB5;
+      font-weight: 600;
+    }
+
+    .playstore-btn-text .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #FAFAFF;
+      line-height: 1.2;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-accent);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .qr-badge-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    .qr-badge-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      background: #181424;
+    }
+
+    .qr-badge-info { font-size: 0.82rem; color: var(--text-muted); }
+    .qr-badge-info strong { display: block; color: var(--text-main); font-size: 0.9rem; }
+
+    .hero-media-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 8px;
+      background: linear-gradient(135deg, rgba(179, 157, 250, 0.3) 0%, rgba(44, 38, 66, 0.4) 50%, rgba(126, 200, 145, 0.3) 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(123, 82, 232, 0.25);
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero-media-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius-lg) - 4px);
+    }
+
+    .stats-bar {
+      margin: 1.5rem 0 4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-item { display: flex; align-items: center; gap: 1rem; }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .stat-text h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.15rem; }
+    .stat-text p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.3; }
+
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+    .section-tag {
+      color: var(--secondary-green);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .section-title { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+    .section-desc { font-size: 1.05rem; color: var(--text-muted); }
+
+    .gallery-section { padding: 3rem 0; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+    }
+    .gallery-card picture img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+    }
+    .gallery-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .gallery-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+
+    .features-section { padding: 3.5rem 0; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text-main); }
+    .feature-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    .video-section {
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+    .video-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .pricing-table-section { padding: 4rem 0; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #1D1730 0%, #151122 100%);
+      box-shadow: 0 12px 40px rgba(123, 82, 232, 0.25);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: var(--primary-accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+    }
+    .pricing-header h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .pricing-price { font-size: 2.5rem; font-weight: 800; margin: 1rem 0; color: var(--text-main); }
+    .pricing-price span { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+    .pricing-features { list-style: none; margin: 1.5rem 0 2rem; flex-grow: 1; }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+      color: var(--text-muted);
+    }
+    .pricing-features li.checked { color: var(--text-main); }
+    .pricing-features li.checked svg { stroke: var(--secondary-green); }
+
+    .faq-section { padding: 3.5rem 0 5rem; }
+    .faq-grid {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+    }
+    .faq-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main); }
+    .faq-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    .bottom-cta {
+      background: linear-gradient(180deg, rgba(24, 20, 36, 0) 0%, rgba(35, 29, 56, 0.7) 100%);
+      border-top: 1px solid var(--border-color);
+      padding: 4.5rem 0 4rem;
+      text-align: center;
+    }
+    .bottom-cta h2 { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+    .bottom-cta p { font-size: 1.1rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 2.25rem; }
+
+    footer {
+      background: #0A0812;
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      color: var(--text-subtle);
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55; max-width: 320px; }
+    .footer-col h5 { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Article / Guide Specific Styling */
+    .article-header { padding: 3rem 0 2rem; max-width: 820px; margin: 0 auto; }
+    .article-header h1 { font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .article-content { max-width: 820px; margin: 0 auto 5rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); }
+    .article-content h2 { font-size: 1.85rem; font-weight: 800; color: var(--text-main); margin: 2.5rem 0 1rem; }
+    .article-content h3 { font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin: 2rem 0 0.75rem; }
+    .article-content p { margin-bottom: 1.25rem; }
+    .article-content ul, .article-content ol { margin: 0 0 1.5rem 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    .article-content code {
+      background: var(--surface-variant);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      color: var(--primary);
+    }
+    .article-content pre {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      color: #A9B7C6;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .data-table th, .data-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .data-table th {
+      background: var(--surface-variant);
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .data-table tr:hover td { background: var(--bg-card-hover); }
+
+    .callout-box {
+      background: linear-gradient(135deg, rgba(123, 82, 232, 0.15) 0%, rgba(126, 200, 145, 0.1) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout-box h4 { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
+
+    @media (max-width: 992px) {
+      .hero { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+      .hero-subtitle { margin: 0 auto 2rem; }
+      .cta-wrapper { justify-content: center; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .features-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2.3rem; }
+      .stats-bar { grid-template-columns: 1fr; padding: 1.25rem; }
+      .gallery-grid, .features-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .qr-badge-card { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="ambient-glow">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="glow-3"></div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/es/" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v2h-4V4zm6 0h4v4h-4V4zM4 10h2v4H4v-4zm14 0h2v4h-2v-4zM4 16h4v4H4v-4zm6 2h4v2h-4v-2zm6-2h4v4h-4v-4zm-4-6h2v2h-2v-2z"/></svg>
+          </div>
+          <span>SheetScan</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="/es/#features">Funciones</a></li>
+          <li><a href="/es/google-sheets-barcode-inventory-template.html">Plantilla Gratis</a></li>
+          <li><a href="/es/how-to-scan-barcodes-into-google-sheets.html">Cómo Escanear</a></li>
+          <li><a href="/es/qr-code-attendance-google-sheets.html">Asistencia QR</a></li>
+          <li><a href="/es/#pricing">Precios</a></li>
+          <li><a href="/es/#faq">Preguntas</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="lang-switcher">🌐 <a href="/qr-code-attendance-google-sheets.html">EN</a><a href="/es/qr-code-attendance-google-sheets.html" class="active">ES</a><a href="/pt/qr-code-attendance-google-sheets.html">PT</a><a href="/pl/qr-code-attendance-google-sheets.html">PL</a><a href="/uk/qr-code-attendance-google-sheets.html">UK</a><a href="/de/qr-code-attendance-google-sheets.html">DE</a></div>
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+            <span>Descargar</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="article-header">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>Solución de Asistencia y Registro &bull; Google Sheets</span>
+      </div>
+      <h1>Control de Asistencia con Códigos QR en Google Sheets</h1>
+      <div class="article-meta">
+        <span>⏱️ 4 min de lectura</span>
+        <span>•</span>
+        <span>🎫 Eventos y Formación</span>
+        <span>•</span>
+        <span>⚡ Registro en Tiempo Real</span>
+      </div>
+      <p class="hero-subtitle">
+        Olvídate de las hojas de papel desordenadas. Genera acreditaciones con códigos QR para asistentes o alumnos y utiliza SheetScan para registrar la hora de llegada directamente en una hoja compartida de Google Sheets en tiempo real.
+      </p>
+    </div>
+
+    <div class="article-content">
+      <h2>¿Por qué usar Google Sheets para el control de asistencia?</h2>
+      <p>Las plataformas de entradas suelen cobrar suscripciones costosas o comisiones abusivas por asistente. Con Google Sheets y SheetScan, tú eres dueño del 100% de tus datos, puedes compartir la hoja con varios recepcionistas a la vez y exportar informes a Excel o PDF con un solo clic.</p>
+
+      <h2>Estructura recomendada para la lista de asistencia</h2>
+      <p>Crea una hoja sencilla de 4 columnas en Google Sheets:</p>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Columna A (ID Entrada / QR)</th>
+              <th>Columna B (Nombre del Asistente)</th>
+              <th>Columna C (Tipo de Entrada / Rol)</th>
+              <th>Columna D (Hora de Llegada)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>QR-1001</code></td>
+              <td>Sara García</td>
+              <td>Invitada VIP</td>
+              <td><code>2026-11-06 09:14:22</code></td>
+            </tr>
+            <tr>
+              <td><code>QR-1002</code></td>
+              <td>Carlos Mendoza</td>
+              <td>Entrada General</td>
+              <td><code>2026-11-06 09:15:04</code></td>
+            </tr>
+            <tr>
+              <td><code>QR-1003</code></td>
+              <td>Elena Rostova</td>
+              <td>Ponente</td>
+              <td><code>2026-11-06 09:18:51</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Cómo configurarlo en 4 pasos:</h2>
+      <ol>
+        <li><strong>Genera los Códigos QR:</strong> Utiliza cualquier generador gratuito de códigos QR masivo o la fórmula de Google Sheets (ej. <code>=IMAGE("https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl="&amp;A2)</code>) para imprimir los QR en pases o acreditaciones.</li>
+        <li><strong>Conecta con SheetScan:</strong> Pega el enlace de tu hoja de asistencia en la app SheetScan para Android.</li>
+        <li><strong>Configura la Columna D como Fecha/Hora:</strong> En el configurador de esquema de SheetScan, asigna a la Columna D el rol de marca de tiempo automática.</li>
+        <li><strong>Escanea en la puerta:</strong> Enfoca los códigos QR de los asistentes. Cada lectura verifica la entrada y escribe al segundo la hora de acceso en tu hoja de Google Sheets en vivo.</li>
+      </ol>
+
+      <div class="callout-box" style="text-align:center;">
+        <h3 style="color:var(--text-main); margin-bottom:0.75rem;">Comienza a Controlar Asistencias Gratis</h3>
+        <p style="margin-bottom:1.5rem;">Descarga SheetScan en Google Play y empieza a escanear acreditaciones hoy mismo.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+          <svg viewBox="0 0 512 512" style="width:28px;height:28px;"><path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/><path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/><path fill="#EA4335" d="M354.1 328.8L276.7 251.4 47.8 480.3c8.5 9 22.4 10.1 38.3 1.1l268-152.6"/><path fill="#34A853" d="M354.1 173.2L86.1 20.6C70.2 11.6 56.3 12.7 47.8 21.7l228.9 228.9 77.4-77.4z"/></svg>
+          <div class="playstore-btn-text">
+            <span class="subtitle">DESCARGAR GRATIS</span>
+            <span class="title">Google Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/es/" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v2h-4V4zm6 0h4v4h-4V4zM4 10h2v4H4v-4zm14 0h2v4h-2v-4zM4 16h4v4H4v-4zm6 2h4v2h-4v-2zm6-2h4v4h-4v-4zm-4-6h2v2h-2v-2z"/></svg>
+            </div>
+            <span>SheetScan</span>
+          </a>
+          <p>El escáner de códigos de barras moderno y offline para Android, diseñado para el control de inventario en Google Sheets sin intermediarios.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Guías Gratuitas</h5>
+          <ul class="footer-links">
+            <li><a href="/es/google-sheets-barcode-inventory-template.html">Plantilla de Inventario</a></li>
+            <li><a href="/es/how-to-scan-barcodes-into-google-sheets.html">Cómo Escanear en Sheets</a></li>
+            <li><a href="/es/qr-code-attendance-google-sheets.html">Control de Asistencia QR</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Idiomas</h5>
+          <ul class="footer-links">
+            <li><a href="/qr-code-attendance-google-sheets.html">English</a></li>
+            <li><a href="/es/qr-code-attendance-google-sheets.html">Español</a></li>
+            <li><a href="/pt/qr-code-attendance-google-sheets.html">Português</a></li>
+            <li><a href="/pl/qr-code-attendance-google-sheets.html">Polski</a></li>
+            <li><a href="/uk/qr-code-attendance-google-sheets.html">Українська</a></li>
+            <li><a href="/de/qr-code-attendance-google-sheets.html">Deutsch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal y Soporte</h5>
+          <ul class="footer-links">
+            <li><a href="/es/privacy.html">Política de Privacidad</a></li>
+            <li><a href="mailto:yahnencko.sasha@gmail.com">Contactar Soporte</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>SheetScan / Scan2Sheets &copy; 2026. Terminal abierta de inventario para Google Sheets.</div>
+        <div style="font-size:0.85rem; color:var(--text-subtle);">Sincronización directa vía Google API &bull; Cero rastreo externo</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,135 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Privacy Policy — Barcode Scanner to Sheets & QR (Scan2Sheets)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — SheetScan / Scan2Sheets</title>
+  <meta name="description" content="Privacy Policy for SheetScan (Scan2Sheets). Direct Google Sheets API integration, local SQLite storage, camera permissions, and zero server tracking." />
   <meta name="theme-color" content="#0F0C1A" />
+
+  <link rel="canonical" href="https://scan2sheets.app/privacy.html" />
+  <link rel="alternate" hreflang="en" href="https://scan2sheets.app/privacy.html" />
+  <link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/privacy.html" />
+  <link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/privacy.html" />
+  <link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/privacy.html" />
+  <link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/privacy.html" />
+  <link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/privacy.html" />
+  <link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/privacy.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://scan2sheets.app/privacy.html" />
+  <meta property="og:site_name" content="SheetScan / Scan2Sheets" />
+  <meta property="og:title" content="Privacy Policy — SheetScan / Scan2Sheets" />
+  <meta property="og:description" content="Privacy Policy for SheetScan (Scan2Sheets). Direct Google Sheets API integration, local SQLite storage, camera permissions, and zero server tracking." />
+  <meta property="og:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="500" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy — SheetScan / Scan2Sheets" />
+  <meta name="twitter:description" content="Privacy Policy for SheetScan (Scan2Sheets). Direct Google Sheets API integration, local SQLite storage, camera permissions, and zero server tracking." />
+  <meta name="twitter:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SheetScan: Barcode to Sheets",
+    "operatingSystem": "Android",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://scan2sheets.app",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.sheetscan.app",
+    "description": "Privacy Policy for SheetScan (Scan2Sheets). Direct Google Sheets API integration, local SQLite storage, camera permissions, and zero server tracking.",
+    "image": "https://scan2sheets.app/assets/feature-graphic.png",
+    "screenshot": "https://scan2sheets.app/assets/screenshot-1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "120"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
   <style>
+
     :root {
       --bg-dark: #0F0C1A;
       --bg-card: #181424;
+      --bg-card-hover: #211B33;
+      --surface-variant: #231D38;
       --border-color: #2C2642;
+      --border-accent: rgba(179, 157, 250, 0.25);
       --primary: #B39DFA;
       --primary-accent: #7B52E8;
+      --secondary-green: #7EC891;
+      --secondary-dark-green: #1A4D2A;
+      --amber-gold: #F5C142;
       --text-main: #FAFAFF;
       --text-muted: #C9C4D4;
+      --text-subtle: #8E88A0;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      padding: 2.5rem 1.5rem 4rem;
-      max-width: 860px;
-      margin: 0 auto;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
       background-color: var(--bg-dark);
       color: var(--text-main);
-      line-height: 1.7;
+      font-family: var(--font-main);
     }
-    a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
-    a:hover { color: #fff; }
-    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    h2, strong { font-size: 1.15rem; font-weight: 700; color: var(--primary); display: inline-block; margin-top: 1.5rem; }
-    p { margin: 0.75rem 0; color: var(--text-muted); }
-    ul { padding-left: 1.5rem; margin: 0.75rem 0; color: var(--text-muted); }
-    li { margin-bottom: 0.4rem; }
-    hr { border: 0; border-top: 1px solid var(--border-color); margin: 2.5rem 0 1.5rem; }
-    .back-nav { margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; }
-    .back-nav:hover { color: var(--primary); }
-    footer { font-size: 0.88rem; color: #8E88A0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-1 {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 750px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.22) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(60px);
+    }
+    .glow-2 {
+      position: absolute;
+      top: 45%;
+      right: -150px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(126, 200, 145, 0.12) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+    .glow-3 {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123, 82, 232, 0.15) 0%, rgba(15, 12, 26, 0) 70%);
+      filter: blur(80px);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(15, 12, 26, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #7B52E8 0%, #3D8C52 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(123, 82, 232, 0.4);
+    }
+
+    .logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-switcher a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0 0.2rem;
+      font-weight: 600;
+    }
+    .lang-switcher a:hover, .lang-switcher a.active {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #7B52E8 0%, #6032D6 100%);
+      color: #fff;
+      padding: 0.55rem 1.15rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(123, 82, 232, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(123, 82, 232, 0.5);
+    }
+
+    .hero {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-accent);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--secondary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--secondary-green);
+    }
+
+    .hero-title {
+      font-size: 3.1rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #FAFAFF 30%, #B39DFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+
+    .cta-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .playstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: #000000;
+      border: 1px solid var(--border-accent);
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-md);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .playstore-btn:hover {
+      background: #110e1e;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(123, 82, 232, 0.35);
+    }
+
+    .playstore-btn svg { width: 32px; height: 32px; flex-shrink: 0; }
+
+    .playstore-btn-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .playstore-btn-text .subtitle {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #A59FB5;
+      font-weight: 600;
+    }
+
+    .playstore-btn-text .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #FAFAFF;
+      line-height: 1.2;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-accent);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .qr-badge-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    .qr-badge-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      background: #181424;
+    }
+
+    .qr-badge-info { font-size: 0.82rem; color: var(--text-muted); }
+    .qr-badge-info strong { display: block; color: var(--text-main); font-size: 0.9rem; }
+
+    .hero-media-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 8px;
+      background: linear-gradient(135deg, rgba(179, 157, 250, 0.3) 0%, rgba(44, 38, 66, 0.4) 50%, rgba(126, 200, 145, 0.3) 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(123, 82, 232, 0.25);
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero-media-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius-lg) - 4px);
+    }
+
+    .stats-bar {
+      margin: 1.5rem 0 4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-item { display: flex; align-items: center; gap: 1rem; }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .stat-text h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.15rem; }
+    .stat-text p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.3; }
+
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+    .section-tag {
+      color: var(--secondary-green);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .section-title { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+    .section-desc { font-size: 1.05rem; color: var(--text-muted); }
+
+    .gallery-section { padding: 3rem 0; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+    }
+    .gallery-card picture img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+    }
+    .gallery-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .gallery-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+
+    .features-section { padding: 3.5rem 0; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--surface-variant);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text-main); }
+    .feature-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    .video-section {
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+    .video-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .pricing-table-section { padding: 4rem 0; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #1D1730 0%, #151122 100%);
+      box-shadow: 0 12px 40px rgba(123, 82, 232, 0.25);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: var(--primary-accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+    }
+    .pricing-header h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .pricing-price { font-size: 2.5rem; font-weight: 800; margin: 1rem 0; color: var(--text-main); }
+    .pricing-price span { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+    .pricing-features { list-style: none; margin: 1.5rem 0 2rem; flex-grow: 1; }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+      color: var(--text-muted);
+    }
+    .pricing-features li.checked { color: var(--text-main); }
+    .pricing-features li.checked svg { stroke: var(--secondary-green); }
+
+    .faq-section { padding: 3.5rem 0 5rem; }
+    .faq-grid {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+    }
+    .faq-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main); }
+    .faq-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    .bottom-cta {
+      background: linear-gradient(180deg, rgba(24, 20, 36, 0) 0%, rgba(35, 29, 56, 0.7) 100%);
+      border-top: 1px solid var(--border-color);
+      padding: 4.5rem 0 4rem;
+      text-align: center;
+    }
+    .bottom-cta h2 { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+    .bottom-cta p { font-size: 1.1rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 2.25rem; }
+
+    footer {
+      background: #0A0812;
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      color: var(--text-subtle);
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55; max-width: 320px; }
+    .footer-col h5 { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Article / Guide Specific Styling */
+    .article-header { padding: 3rem 0 2rem; max-width: 820px; margin: 0 auto; }
+    .article-header h1 { font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .article-content { max-width: 820px; margin: 0 auto 5rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); }
+    .article-content h2 { font-size: 1.85rem; font-weight: 800; color: var(--text-main); margin: 2.5rem 0 1rem; }
+    .article-content h3 { font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin: 2rem 0 0.75rem; }
+    .article-content p { margin-bottom: 1.25rem; }
+    .article-content ul, .article-content ol { margin: 0 0 1.5rem 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    .article-content code {
+      background: var(--surface-variant);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      color: var(--primary);
+    }
+    .article-content pre {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      color: #A9B7C6;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .data-table th, .data-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .data-table th {
+      background: var(--surface-variant);
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .data-table tr:hover td { background: var(--bg-card-hover); }
+
+    .callout-box {
+      background: linear-gradient(135deg, rgba(123, 82, 232, 0.15) 0%, rgba(126, 200, 145, 0.1) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout-box h4 { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
+
+    @media (max-width: 992px) {
+      .hero { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+      .hero-subtitle { margin: 0 auto 2rem; }
+      .cta-wrapper { justify-content: center; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .features-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2.3rem; }
+      .stats-bar { grid-template-columns: 1fr; padding: 1.25rem; }
+      .gallery-grid, .features-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .qr-badge-card { display: none; }
+    }
+
   </style>
 </head>
 <body>
-<a href="/" class="back-nav">← Back to Scan2Sheets</a>
-<h1>Privacy Policy</h1>
-<p>This Privacy Policy applies to the mobile application <strong>Barcode Scanner to Sheets &amp; QR</strong> (also known as <strong>Scan2Sheets</strong>, package name: <code>com.sheetscan.app</code>, hereby referred to as "Application"), developed and published by <strong>Keldmar</strong> (hereby referred to as "Service Provider", "we", "us", or "our") as a Free service. This service is intended for use "AS IS".</p>
+  <div class="ambient-glow">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="glow-3"></div>
+  </div>
 
-<br><strong>What the Application Does</strong>
-<p><strong>Barcode Scanner to Sheets &amp; QR</strong> (Scan2Sheets) is a mobile application that lets users digitize printed or handwritten records by capturing them with the device camera and writing the recognized data directly into the user's own Google Sheets spreadsheets. To do this, the Application authenticates the user with their Google account and accesses their Google Sheets spreadsheets through the official Google APIs.</p>
+  <header>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v2h-4V4zm6 0h4v4h-4V4zM4 10h2v4H4v-4zm14 0h2v4h-2v-4zM4 16h4v4H4v-4zm6 2h4v2h-4v-2zm6-2h4v4h-4v-4zm-4-6h2v2h-2v-2z"/></svg>
+          </div>
+          <span>SheetScan</span>
+        </a>
 
-<br><strong>Information Collection and Use</strong>
-<p>The Application collects information when you download and use it. This information may include information such as </p>
-<ul>
-  <li>Your device's Internet Protocol address (e.g. IP address)</li>
-  <li>The pages of the Application that you visit, the time and date of your visit, the time spent on those pages</li>
-  <li>The time spent on the Application</li>
-  <li>The operating system you use on your mobile device</li>
-</ul>
-<p>The Application does not gather precise information about the location of your mobile device.</p>
-<p>The Application does not use Artificial Intelligence (AI) technologies to process your data or provide features.</p>
-<p>The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.</p>
-<p>For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.</p>
+        <ul class="nav-links">
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/google-sheets-barcode-inventory-template.html">Free Template</a></li>
+          <li><a href="/how-to-scan-barcodes-into-google-sheets.html">How to Scan</a></li>
+          <li><a href="/qr-code-attendance-google-sheets.html">QR Attendance</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
 
-<br><strong>Information Accessed Through Your Google Account</strong>
-<p>When you sign in with Google, the Application receives the following data from Google:</p>
-<ul>
-  <li>Your Google account email address, display name, and a unique account identifier — used solely to identify you within the app session.</li>
-  <li>An OAuth access token issued by Google that allows the Application to act on your behalf for the scopes you grant. Tokens are kept in memory by the Android Credential Manager and Google Play Services and are not persisted by the Application to disk.</li>
-</ul>
-<p>The Application requests the following Google API scopes:</p>
-<ul>
-  <li><strong>https://www.googleapis.com/auth/spreadsheets</strong> — used to read from and write to spreadsheets you explicitly select inside the Application. This includes creating new spreadsheets, appending rows produced by a scan, updating existing rows when you correct recognition results, and deleting rows you mark for deletion.</li>
-  <li><strong>https://www.googleapis.com/auth/drive.readonly</strong> — used solely to list the names and identifiers of your Google Sheets spreadsheets so you can pick which one to use inside the Application. The Application reads only spreadsheet metadata (file id and display name) and does not download, modify, share, or delete any other Google Drive content.</li>
-</ul>
-<p>The Application also uses the device camera to capture documents. Captured images are processed locally on your device. Images are not uploaded to any server controlled by the Service Provider. After recognition, the extracted text is written to your selected Google Sheets spreadsheet via the official Google Sheets API.</p>
+        <div class="nav-right">
+          <div class="lang-switcher">🌐 <a href="/privacy.html" class="active">EN</a><a href="/es/privacy.html">ES</a><a href="/pt/privacy.html">PT</a><a href="/pl/privacy.html">PL</a><a href="/uk/privacy.html">UK</a><a href="/de/privacy.html">DE</a></div>
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+            <span>Get App</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<br><strong>Limited Use of Google User Data</strong>
-<p>Barcode Scanner to Sheets &amp; QR's (Scan2Sheets) use and transfer of information received from Google APIs to any other app will adhere to the
-<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-<p>In particular:</p>
-<ul>
-  <li>Google user data is used only to provide and improve user-facing features that are prominent in the Application's user experience.</li>
-  <li>Google user data is not transferred to third parties except as necessary to provide or improve user-facing features, to comply with applicable law, or as part of a merger, acquisition, or sale of assets with notice to users.</li>
-  <li>Google user data is not used for serving advertisements.</li>
-  <li>Humans are not allowed to read Google user data, except (a) with your explicit consent for specific data, (b) for security purposes such as investigating abuse, (c) to comply with applicable law, or (d) for internal operations where the data has been aggregated and anonymized.</li>
-  <li>Google user data is not used to develop, improve, or train generalized AI and/or machine learning models.</li>
-</ul>
+  <main class="container" style="max-width:860px; padding: 4rem 1.5rem;">
+    <h1 style="font-size:2.4rem; font-weight:800; margin-bottom:1.5rem; letter-spacing:-0.02em;">Privacy Policy</h1>
+    <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:2rem;">This Privacy Policy applies to the mobile application <strong>Barcode Scanner to Sheets &amp; QR</strong> (also known as <strong>SheetScan</strong> / <strong>Scan2Sheets</strong>, package name: <code>com.sheetscan.app</code>), developed and published by <strong>Keldmar</strong> as a free/freemium service.</p>
 
-<br><strong>Third Party Access</strong>
-<p>Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.</p>
-<div>
-<p>Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:</p>
-<ul>
-  <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a></li>
-  <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Google Analytics for Firebase</a></li>
-  <li><a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener noreferrer">Firebase Crashlytics</a></li>
-</ul>
-</div>
-<p>The Service Provider may disclose User Provided and Automatically Collected Information:</p>
-<ul>
-  <li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
-  <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
-  <li>with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
-</ul>
+    <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem 2.5rem; margin-bottom:2rem;">
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">What the Application Does</h2>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">SheetScan allows users to scan barcodes and QR codes using their mobile device camera and write the scanned data directly into their own Google Sheets spreadsheets in real-time. To do this, the Application authenticates the user with their Google account and communicates directly with the official Google Sheets API.</p>
 
-<br><strong>Opt-Out Rights</strong>
-<p>You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
-<p>You can revoke the Application's access to your Google account at any time by visiting <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a>. Revoking access immediately stops the Application from accessing your Google Sheets and Drive data.</p>
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">Direct Google Sheets API &amp; Permissions</h2>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:0.75rem;">When you sign in with Google, SheetScan requests only the necessary OAuth scopes to read and update your chosen spreadsheets:</p>
+      <ul style="color:var(--text-muted); padding-left:1.5rem; margin-bottom:1rem; line-height:1.7;">
+        <li><strong>https://www.googleapis.com/auth/spreadsheets</strong> — used exclusively to read and write rows in spreadsheets you explicitly select inside the Application.</li>
+        <li><strong>https://www.googleapis.com/auth/drive.readonly</strong> — used solely to display your list of Google Sheets in the file picker so you can select your inventory spreadsheet.</li>
+      </ul>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;"><strong>Zero Developer Server:</strong> SheetScan operates in client-only mode. All API calls travel directly between your phone and Google's official HTTPS endpoints (<code>sheets.googleapis.com</code>). We run no intermediary backend servers, and we never view, intercept, log, or store your spreadsheet data or Google account credentials.</p>
 
-<br><strong>Data Retention Policy</strong>
-<p>The Service Provider does not retain Google user data on any server. Spreadsheet content remains in your Google Drive and is accessed only when you actively use the Application.</p>
-<p>The Service Provider will retain other User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at yahnencko.sasha@gmail.com and they will respond in a reasonable time.</p>
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">Camera Usage</h2>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">The camera permission is used solely on-device by Google ML Kit to detect and decode barcode/QR symbols in real-time. Images and video feeds are never recorded, saved, or transmitted over the network.</p>
 
-<br><strong>Children</strong>
-<p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.</p>
-<div>
-<p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider Keldmar (yahnencko.sasha@gmail.com) so that they will be able to take the necessary actions.</p>
-</div>
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">Offline Storage (Room SQLite)</h2>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">When you scan items offline, data is queued locally in a secure, sandboxed SQLite database on your device. Once an internet connection is re-established, the queue syncs directly to your Google Sheet.</p>
 
-<br><strong>Security</strong>
-<p>The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains. All communication with Google APIs happens over HTTPS, and OAuth tokens are managed by the Android system's secure Credential Manager and Google Play Services.</p>
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">Third-Party Services</h2>
+      <p style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">The Application integrates standard Google Play Services, Firebase Crashlytics (for anonymous crash reporting), and Google Play In-App Billing (for optional Pro subscriptions). None of these services have access to your Google Sheets data.</p>
 
-<br><strong>Changes</strong>
-<p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
-<p>This privacy policy is effective as of 2026-05-08 (Last updated: 2026-11-03)</p>
+      <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">Contact Developer</h2>
+      <p style="color:var(--text-muted); line-height:1.7;">If you have any questions or data requests, please contact the developer directly at <a href="mailto:yahnencko.sasha@gmail.com">yahnencko.sasha@gmail.com</a>.</p>
+    </div>
+  </main>
 
-<br><strong>Your Consent</strong>
-<p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.</p>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v2h-4V4zm6 0h4v4h-4V4zM4 10h2v4H4v-4zm14 0h2v4h-2v-4zM4 16h4v4H4v-4zm6 2h4v2h-4v-2zm6-2h4v4h-4v-4zm-4-6h2v2h-2v-2z"/></svg>
+            </div>
+            <span>SheetScan</span>
+          </a>
+          <p>The modern, offline-first Android barcode scanner designed directly for Google Sheets inventory, stock taking, and asset management.</p>
+        </div>
 
-<br><strong>Contact Us</strong>
-<p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the developer and Service Provider (Keldmar) via email at yahnencko.sasha@gmail.com.</p>
-<hr>
+        <div class="footer-col">
+          <h5>Free Guides</h5>
+          <ul class="footer-links">
+            <li><a href="/google-sheets-barcode-inventory-template.html">Inventory Template</a></li>
+            <li><a href="/how-to-scan-barcodes-into-google-sheets.html">How to Scan Guide</a></li>
+            <li><a href="/qr-code-attendance-google-sheets.html">QR Attendance Tracker</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Languages</h5>
+          <ul class="footer-links">
+            <li><a href="/privacy.html">English</a></li>
+            <li><a href="/es/privacy.html">Español</a></li>
+            <li><a href="/pt/privacy.html">Português</a></li>
+            <li><a href="/pl/privacy.html">Polski</a></li>
+            <li><a href="/uk/privacy.html">Українська</a></li>
+            <li><a href="/de/privacy.html">Deutsch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal & Support</h5>
+          <ul class="footer-links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="mailto:yahnencko.sasha@gmail.com">Contact Support</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>SheetScan / Scan2Sheets &copy; 2026. Free & Open-First Inventory Terminal.</div>
+        <div style="font-size:0.85rem; color:var(--text-subtle);">Direct Google Drive & Sheets API Sync &bull; Zero Server Tracking</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

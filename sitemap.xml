@@ -1,15 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main English Homepage -->
   <url>
     <loc>https://scan2sheets.app/</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
+
+  <!-- Spanish (Latin America & Spain) -->
+  <url>
+    <loc>https://scan2sheets.app/es/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+  </url>
+
+  <!-- Portuguese (Brazil & Portugal) -->
+  <url>
+    <loc>https://scan2sheets.app/pt/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+  </url>
+
+  <!-- Polish -->
+  <url>
+    <loc>https://scan2sheets.app/pl/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+  </url>
+
+  <!-- Ukrainian -->
+  <url>
+    <loc>https://scan2sheets.app/uk/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+  </url>
+
+  <!-- German -->
+  <url>
+    <loc>https://scan2sheets.app/de/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+  </url>
+
+  <!-- Free Barcode Inventory Template Guide -->
+  <url>
+    <loc>https://scan2sheets.app/google-sheets-barcode-inventory-template.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- How to Scan Barcodes into Google Sheets Tutorial -->
+  <url>
+    <loc>https://scan2sheets.app/how-to-scan-barcodes-into-google-sheets.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- QR Code Attendance & Check-In Guide -->
+  <url>
+    <loc>https://scan2sheets.app/qr-code-attendance-google-sheets.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
   <url>
     <loc>https://scan2sheets.app/privacy.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
 </urlset>

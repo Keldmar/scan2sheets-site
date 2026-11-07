@@ -768,7 +768,7 @@
 
         <div class="nav-right">
           <div class="lang-switcher">🌐 <a href="/qr-code-attendance-google-sheets.html" class="active">EN</a><a href="/es/qr-code-attendance-google-sheets.html">ES</a><a href="/pt/qr-code-attendance-google-sheets.html">PT</a><a href="/pl/qr-code-attendance-google-sheets.html">PL</a><a href="/uk/qr-code-attendance-google-sheets.html">UK</a><a href="/de/qr-code-attendance-google-sheets.html">DE</a></div>
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_qr_attendance%26utm_content%3Dheader_nav" data-placement="header_nav" target="_blank" rel="noopener noreferrer" class="nav-cta">
             <span>Get App</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
@@ -847,7 +847,7 @@
       <div class="callout-box" style="text-align:center;">
         <h3 style="color:var(--text-main); margin-bottom:0.75rem;">Start Tracking Attendance for Free</h3>
         <p style="margin-bottom:1.5rem;">Download SheetScan on Google Play and start scanning QR check-in badges today.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+        <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_qr_attendance%26utm_content%3Darticle_cta" data-placement="article_cta" target="_blank" rel="noopener noreferrer" class="playstore-btn">
           <svg viewBox="0 0 512 512" style="width:28px;height:28px;"><path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/><path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/><path fill="#EA4335" d="M354.1 328.8L276.7 251.4 47.8 480.3c8.5 9 22.4 10.1 38.3 1.1l268-152.6"/><path fill="#34A853" d="M354.1 173.2L86.1 20.6C70.2 11.6 56.3 12.7 47.8 21.7l228.9 228.9 77.4-77.4z"/></svg>
           <div class="playstore-btn-text">
             <span class="subtitle">DOWNLOAD FREE</span>
@@ -897,7 +897,7 @@
           <ul class="footer-links">
             <li><a href="/privacy.html">Privacy Policy</a></li>
             <li><a href="mailto:yahnencko.sasha@gmail.com">Contact Support</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_qr_attendance%26utm_content%3Dfooter_link" data-placement="footer_link" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
           </ul>
         </div>
       </div>
@@ -923,13 +923,31 @@
         });
       });
 
+      var urlParams = new URLSearchParams(window.location.search);
+      var extSource = urlParams.get('utm_source');
+      var extMedium = urlParams.get('utm_medium');
+      var extCampaign = urlParams.get('utm_campaign');
+      var extTerm = urlParams.get('utm_term');
+
       var playLinks = document.querySelectorAll('a[href*="play.google.com"]');
       playLinks.forEach(function(link) {
+        var placement = link.getAttribute('data-placement') || 'cta';
+        if (extSource || extMedium || extCampaign) {
+          var refParams = new URLSearchParams();
+          refParams.set('utm_source', extSource || 'scan2sheets_site');
+          refParams.set('utm_medium', extMedium || 'web');
+          refParams.set('utm_campaign', extCampaign || 'en_qr_attendance');
+          if (extTerm) refParams.set('utm_term', extTerm);
+          refParams.set('utm_content', 'en_qr_attendance_' + placement);
+          link.href = 'https://play.google.com/store/apps/details?id=com.sheetscan.app&referrer=' + encodeURIComponent(refParams.toString());
+        }
         link.addEventListener('click', function() {
           if (typeof gtag === 'function') {
             gtag('event', 'click_google_play', {
               'event_category': 'conversion',
-              'event_label': window.location.pathname
+              'event_label': window.location.pathname,
+              'button_placement': placement,
+              'page_campaign': 'en_qr_attendance'
             });
           }
         });

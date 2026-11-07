@@ -768,7 +768,7 @@
 
         <div class="nav-right">
           <div class="lang-switcher">🌐 <a href="/privacy.html">EN</a><a href="/es/privacy.html">ES</a><a href="/pt/privacy.html" class="active">PT</a><a href="/pl/privacy.html">PL</a><a href="/uk/privacy.html">UK</a><a href="/de/privacy.html">DE</a></div>
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Dpt_privacy%26utm_content%3Dheader_nav" data-placement="header_nav" target="_blank" rel="noopener noreferrer" class="nav-cta">
             <span>Baixar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
@@ -779,7 +779,7 @@
 
   <main class="container" style="max-width:860px; padding: 4rem 1.5rem;">
     <h1 style="font-size:2.4rem; font-weight:800; margin-bottom:1.5rem; letter-spacing:-0.02em;">Política de Privacidade</h1>
-    <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:2rem;">Esta Política de Privacidade se aplica ao aplicativo <strong>Barcode Scanner to Sheets &amp; QR</strong> (SheetScan / Scan2Sheets, pacote: <code>com.sheetscan.app</code>), desenvolvido e publicado por <strong>Keldmar</strong>.</p>
+    <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:2rem;">Esta Política de Privacidade se aplica ao aplicativo <strong>Barcode Scanner to Sheets &amp; QR</strong> (SheetScan / Scan2Sheets, pacote: <code>com.sheetscan.app</code>), desenvolvido e publicado por <strong>Keldmar</strong> (Oleksandr Yakhnenko).</p>
 
     <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem 2.5rem; margin-bottom:2rem;">
       <h2 style="font-size:1.4rem; font-weight:700; color:var(--primary); margin-bottom:0.75rem;">O que o aplicativo faz?</h2>
@@ -846,7 +846,7 @@
           <ul class="footer-links">
             <li><a href="/pt/privacy.html">Política de Privacidade</a></li>
             <li><a href="mailto:yahnencko.sasha@gmail.com">Suporte por E-mail</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Dpt_privacy%26utm_content%3Dfooter_link" data-placement="footer_link" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
           </ul>
         </div>
       </div>
@@ -872,13 +872,31 @@
         });
       });
 
+      var urlParams = new URLSearchParams(window.location.search);
+      var extSource = urlParams.get('utm_source');
+      var extMedium = urlParams.get('utm_medium');
+      var extCampaign = urlParams.get('utm_campaign');
+      var extTerm = urlParams.get('utm_term');
+
       var playLinks = document.querySelectorAll('a[href*="play.google.com"]');
       playLinks.forEach(function(link) {
+        var placement = link.getAttribute('data-placement') || 'cta';
+        if (extSource || extMedium || extCampaign) {
+          var refParams = new URLSearchParams();
+          refParams.set('utm_source', extSource || 'scan2sheets_site');
+          refParams.set('utm_medium', extMedium || 'web');
+          refParams.set('utm_campaign', extCampaign || 'pt_privacy');
+          if (extTerm) refParams.set('utm_term', extTerm);
+          refParams.set('utm_content', 'pt_privacy_' + placement);
+          link.href = 'https://play.google.com/store/apps/details?id=com.sheetscan.app&referrer=' + encodeURIComponent(refParams.toString());
+        }
         link.addEventListener('click', function() {
           if (typeof gtag === 'function') {
             gtag('event', 'click_google_play', {
               'event_category': 'conversion',
-              'event_label': window.location.pathname
+              'event_label': window.location.pathname,
+              'button_placement': placement,
+              'page_campaign': 'pt_privacy'
             });
           }
         });

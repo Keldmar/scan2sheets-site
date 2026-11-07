@@ -768,7 +768,7 @@
 
         <div class="nav-right">
           <div class="lang-switcher">🌐 <a href="/" class="active">EN</a><a href="/es/">ES</a><a href="/pt/">PT</a><a href="/pl/">PL</a><a href="/uk/">UK</a><a href="/de/">DE</a></div>
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dheader_nav" data-placement="header_nav" target="_blank" rel="noopener noreferrer" class="nav-cta">
             <span>Get App</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
@@ -795,7 +795,7 @@
         </p>
 
         <div class="cta-wrapper">
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dhero_cta" data-placement="hero_cta" target="_blank" rel="noopener noreferrer" class="playstore-btn">
             <svg viewBox="0 0 512 512">
               <path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/>
               <path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/>
@@ -1061,7 +1061,7 @@
               <span>100% Ad-Free Experience</span>
             </li>
           </ul>
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" class="btn-secondary" style="justify-content:center;">Install Free on Google Play</a>
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dpricing_free" data-placement="pricing_free" class="btn-secondary" style="justify-content:center;">Install Free on Google Play</a>
         </div>
 
         <!-- Pro Tier -->
@@ -1098,7 +1098,7 @@
               <span>Support Continuous Indie Development</span>
             </li>
           </ul>
-          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" class="nav-cta" style="justify-content:center; padding:0.85rem 1.4rem;">Upgrade to Pro in App</a>
+          <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dpricing_pro" data-placement="pricing_pro" class="nav-cta" style="justify-content:center; padding:0.85rem 1.4rem;">Upgrade to Pro in App</a>
         </div>
       </div>
     </section>
@@ -1145,7 +1145,7 @@
       <h2>Transform Your Phone into a Barcode Terminal</h2>
       <p>Download SheetScan for Android and connect your physical items straight to Google Sheets in seconds.</p>
 
-      <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer" class="playstore-btn">
+      <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dbottom_cta" data-placement="bottom_cta" target="_blank" rel="noopener noreferrer" class="playstore-btn">
         <svg viewBox="0 0 512 512">
           <path fill="#4285F4" d="M47.8 19.3c-7.2 7.8-11.4 19.4-11.4 34.2v405c0 14.8 4.2 26.4 11.4 34.2l1.9 1.9 227-227.1v-5.4L49.7 17.4l-1.9 1.9z"/>
           <path fill="#FBBC04" d="M352.4 329.8l-75.7-75.7v-5.4l75.7-75.7 1.7 1 89.8 51.1c25.6 14.5 25.6 38.4 0 53l-89.8 51.1-1.7 4.6z"/>
@@ -1199,7 +1199,7 @@
           <ul class="footer-links">
             <li><a href="/privacy.html">Privacy Policy</a></li>
             <li><a href="mailto:yahnencko.sasha@gmail.com">Contact Support</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Den_home%26utm_content%3Dfooter_link" data-placement="footer_link" target="_blank" rel="noopener noreferrer">Google Play Store</a></li>
           </ul>
         </div>
       </div>
@@ -1225,13 +1225,31 @@
         });
       });
 
+      var urlParams = new URLSearchParams(window.location.search);
+      var extSource = urlParams.get('utm_source');
+      var extMedium = urlParams.get('utm_medium');
+      var extCampaign = urlParams.get('utm_campaign');
+      var extTerm = urlParams.get('utm_term');
+
       var playLinks = document.querySelectorAll('a[href*="play.google.com"]');
       playLinks.forEach(function(link) {
+        var placement = link.getAttribute('data-placement') || 'cta';
+        if (extSource || extMedium || extCampaign) {
+          var refParams = new URLSearchParams();
+          refParams.set('utm_source', extSource || 'scan2sheets_site');
+          refParams.set('utm_medium', extMedium || 'web');
+          refParams.set('utm_campaign', extCampaign || 'en_home');
+          if (extTerm) refParams.set('utm_term', extTerm);
+          refParams.set('utm_content', 'en_home_' + placement);
+          link.href = 'https://play.google.com/store/apps/details?id=com.sheetscan.app&referrer=' + encodeURIComponent(refParams.toString());
+        }
         link.addEventListener('click', function() {
           if (typeof gtag === 'function') {
             gtag('event', 'click_google_play', {
               'event_category': 'conversion',
-              'event_label': window.location.pathname
+              'event_label': window.location.pathname,
+              'button_placement': placement,
+              'page_campaign': 'en_home'
             });
           }
         });

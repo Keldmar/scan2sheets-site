@@ -66,6 +66,71 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the free tier quota work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every user gets 20 free barcode scans every single day. The quota automatically resets at midnight UTC. This is ideal for testing, small inventory spot checks, or weekly counts. For continuous high-volume audits, you can unlock unlimited scans with SheetScan Pro."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my Google Sheets data safe and private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100%. SheetScan communicates directly with Google's official Sheets & Drive APIs via secure OAuth tokens. We do not operate any middleman servers or third-party databases. Your data never touches our servers and remains strictly inside your own Google Drive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use SheetScan without an internet connection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! SheetScan is built with an offline-first architecture powered by Android Room DB. You can perform hundreds of scans in warehouse dead-zones or basements. Once your device reconnects to Wi-Fi or cellular network, all changes merge automatically without data loss."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What barcode and QR symbologies are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SheetScan supports all major 1D and 2D industrial codes: QR Code, EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, Code 93, Codabar, ITF, and Data Matrix."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to install anything on my computer or Google Sheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No! Unlike desktop barcode wedge software, SheetScan connects directly to your cloud spreadsheet via the Google Sheets API. You don't need to install custom add-ons or keep your computer open while scanning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I auto-increment (+1) stock count in Google Sheets when scanning a barcode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SheetScan features a dedicated Continuous Auto-Increment Mode. When enabled, your phone camera stays active; scanning an existing barcode automatically finds its row in your Google Sheet, increments the quantity by +1, updates the timestamp, and triggers haptic feedback without requiring screen taps or complex Google Apps Script formulas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best affordable alternative to Orca Scan for Google Sheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SheetScan is an offline-first, direct-to-Google Sheets alternative to Orca Scan. It eliminates expensive per-device monthly SaaS subscriptions by connecting directly to your own Google Drive via official Google APIs, supporting custom column schemas and handling up to 100,000+ rows."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />

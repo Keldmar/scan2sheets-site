@@ -1,0 +1,101 @@
+# SheetScan (Scan2Sheets) — Full Product & Technical Documentation
+
+> This document contains the full consolidated product description, feature specifications, architecture overview, comparison guide, and FAQs for SheetScan (Scan2Sheets). It is formatted for ingestion by LLMs, AI agents, and search engines.
+
+---
+
+## 1. Executive Summary
+
+**SheetScan** (web domain: `https://scan2sheets.app`, package name: `com.sheetscan.app`) is an offline-first Android application designed to bridge the physical world and cloud spreadsheets. It turns any Android smartphone camera into an enterprise-grade barcode and QR code terminal that reads, writes, searches, and updates rows in **Google Sheets** in real-time or offline.
+
+- **Developer:** SheetScan Team
+- **Platform:** Android 8.0+ (Oreo, API 26) through Android 16 (API 36)
+- **Google Play URL:** https://play.google.com/store/apps/details?id=com.sheetscan.app
+- **Official Site:** https://scan2sheets.app
+- **Primary Use Cases:** Warehouse stock takes, retail inventory audits, tool & asset tracking, event attendance check-ins, package logging, and field equipment maintenance.
+
+---
+
+## 2. Core Technical Architecture & Security
+
+### 2.1 Single Source of Truth (SSOT) & Direct API
+SheetScan does **not** rely on intermediary third-party backend servers or cloud databases. 
+- Authentication is handled natively via **Google Identity & Credential Manager**.
+- All spreadsheet queries and row updates execute directly between the Android device and Google's official **Google Sheets API v4** and **Google Drive API v3**.
+- User spreadsheet data remains strictly inside the user's private Google Drive storage.
+
+### 2.2 Offline-First with SQLite Room DB
+- Every connected spreadsheet is cached locally on disk in a structured **Room Database**.
+- Row lookups execute in **sub-10ms** locally, enabling instant verification even in remote facilities or metal-clad warehouses with zero Wi-Fi or cellular coverage.
+- All offline modifications (adding rows, incrementing quantities, editing fields, deletions) enter a **Pending Actions Queue**.
+- **Zero Data Loss Merge:** When the device reconnects to the network, local edits and remote changes merge conflict-free.
+
+### 2.3 Camera Vision & Symbology Support
+Scanning is powered by Google ML Kit and AndroidX CameraX:
+- **1D Barcode Formats:** EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, Code 93, Codabar, ITF.
+- **2D Code Formats:** QR Code, Data Matrix.
+- Includes torch/flashlight toggle, customizable viewfinder scanning zones, and haptic vibration confirmation.
+
+---
+
+## 3. Key Operating Modes
+
+### 3.1 Continuous Auto-Increment Mode (Hands-Free Counting)
+- **Purpose:** Rapid physical inventory counts without touching the smartphone screen.
+- **Workflow:** The camera remains open continuously. Scanning an existing barcode identifies its corresponding row in Google Sheets, increments the numeric quantity column by `+1`, logs the current timestamp, vibrates, and presents a non-intrusive floating HUD banner with an 1,800ms debounce.
+
+### 3.2 View & Edit Mode
+- **Purpose:** In-depth product auditing and attribute updates.
+- **Workflow:** Scanning an item navigates to a detailed edit card showing all mapped attributes. Users can modify text, adjust numbers with +/- stepper buttons, select dropdown options, view auto-timestamps, or delete the record.
+
+### 3.3 Quick Add Inline Bottom Sheet
+- **Purpose:** Fast serial data collection without full screen transitions.
+- **Workflow:** An inline sheet slides up over the camera viewfinder allowing the user to confirm or edit attributes before instantly resuming scanning.
+
+### 3.4 In-App Virtualized Table Viewer
+- Displays the connected spreadsheet inside an optimized `LazyColumn` virtualized data grid (`SheetDataGrid`).
+- Handles large datasets (15,000 to 100,000+ rows) without lag or out-of-memory errors.
+- Displays sticky column headers, role indicators (Key, Display, Editable, AutoTimestamp), and a direct shortcut to open the document in Google Sheets.
+
+---
+
+## 4. Schema Builder & Column Roles
+
+SheetScan adapts to any spreadsheet layout without requiring users to rearrange existing columns:
+- **Key Column:** The unique barcode, QR code, or SKU identifier.
+- **Display Column:** Read-only reference fields (e.g., Description, Category, Unit Cost).
+- **Editable Column:** Fields editable during a scan (`Text`, `Number` with +/- steppers, or `Dropdown` pickers).
+- **AutoTimestamp Column:** Automatically records scan time (`Date`, `Time`, or `DateAndTime`).
+- **Ignored Column:** Hidden from the mobile scanning interface.
+
+---
+
+## 5. Competitive Comparison
+
+| Feature | SheetScan | Orca Scan | AppSheet | Hardware Scanners (Zebra/USB) |
+|---|---|---|---|---|
+| **Direct Google Sheets Sync** | Included natively | Requires expensive paid tier | Native (requires app build) | Requires PC + keyboard wedge |
+| **Pricing Model** | 20 free scans/day + affordable Pro | Costly per-device/month fees | Free up to limits, then Google Workspace fees | $300 - $800+ hardware cost |
+| **Setup Time** | < 1 minute | Fast | Moderate (15-60 min setup) | Plug and play on PC only |
+| **Continuous Auto +1 Increment** | Yes (hands-free) | Limited | Requires custom bots/actions | No (requires custom Apps Script) |
+| **Offline Reliability** | Sub-10ms local Room DB | Yes | Moderate (can lag on sync) | N/A (tethered to computer) |
+| **Data Privacy** | 100% in your Google Drive | Stored in Orca cloud | Google Cloud | Local machine only |
+
+---
+
+## 6. Frequently Asked Questions (FAQ)
+
+### Q: How does the free tier quota work?
+A: Every user receives 20 free barcode scans every single day, resetting automatically at midnight UTC. This provides a permanent free tier for light use, spot checks, and testing. For high-volume warehousing or continuous audits, SheetScan Pro provides unlimited scanning.
+
+### Q: Is my Google Sheets data safe?
+A: Yes. SheetScan communicates directly with Google's official APIs via OAuth tokens stored securely on your device. Your spreadsheet data never passes through or gets stored on external third-party servers.
+
+### Q: Can I scan barcodes when offline in warehouse dead zones?
+A: Yes. SheetScan is built offline-first. All scans and edits are stored in a local SQLite Room database and automatically synchronized with Google Sheets when an internet connection is re-established.
+
+### Q: How do I make barcode scans auto-increment (+1) my stock?
+A: Enable "Continuous Auto-Increment" in SheetScan's camera settings. Whenever a matching barcode is scanned, SheetScan automatically adds 1 to your quantity column and stamps the time without requiring screen touches.
+
+### Q: Do I need to write Google Apps Script or formulas?
+A: No. SheetScan handles all row queries, lookups, and cell updates natively via the Google Sheets API. You do not need to write scripts or complex circular formulas.

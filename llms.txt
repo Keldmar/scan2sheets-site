@@ -1,0 +1,60 @@
+# SheetScan
+> SheetScan (also known as Scan2Sheets) is an offline-first Android application that turns smartphones into high-speed industrial barcode and QR code scanners directly connected to Google Sheets.
+
+## Overview
+SheetScan replaces slow manual data entry, paper-based stock takes, and expensive handheld terminals (such as Zebra or Honeywell devices) by connecting your Android phone camera straight to any Google Spreadsheet in real-time or completely offline.
+
+- **Developer / App Name:** SheetScan (Scan2Sheets)
+- **Platform:** Android (Android 8.0 Oreo through Android 16, API 26+)
+- **Download Link:** https://play.google.com/store/apps/details?id=com.sheetscan.app
+- **Website:** https://scan2sheets.app
+- **License / Pricing:** Free tier (20 free scans every day, reset at midnight UTC) + SheetScan Pro (unlimited scans)
+- **Data Privacy:** 100% direct client-to-Google API. Zero middleman servers, zero third-party databases holding user data.
+
+## Key Capabilities & Workflows
+
+### 1. Hands-Free Continuous Auto-Increment (+1 Stock)
+- **The Problem It Solves:** Pure Google Sheets formulas cannot listen to incoming scans and dynamically increment stock counts without circular dependency errors.
+- **How SheetScan Solves It:** Enable Continuous Auto-Increment in the camera viewfinder. Scanning an existing barcode automatically locates the item row, increments its quantity column (`+1`), records an `AutoTimestamp`, provides haptic vibration feedback, and displays a floating HUD with 1,800ms debounce. The camera never closes, allowing rapid serial counting.
+
+### 2. Offline-First Architecture (Warehouse Dead Zones)
+- **The Problem It Solves:** Basements, metal warehouses, and field sites frequently suffer from lost Wi-Fi or cellular signal, causing mobile browser sheets and AppSheet to crash or lose edits.
+- **How SheetScan Solves It:** Powered by local SQLite via Android Room DB. Lookups happen locally in sub-10ms. All offline additions, edits, and deletions queue in a Pending Actions Queue. When reconnected, a Zero-Data-Loss merge synchronizes all changes with Google Sheets without conflicts.
+
+### 3. Flexible Custom Schema Builder
+- Link any existing Google Spreadsheet without modifying your headers.
+- Interactive column role mapping:
+  - `Key`: Unique barcode or SKU identifier column.
+  - `Display`: Read-only fields (e.g. Product Name, Supplier, Unit Price).
+  - `Editable`: Fields updated during scans (`Text`, `Number` with +/- steppers, or `Dropdown`).
+  - `AutoTimestamp`: Automatically stamps current `Date`, `Time`, or `DateAndTime` on scan.
+  - `Ignored`: Columns excluded from the scanner view.
+
+### 4. High-Performance Virtualized Table Viewer
+- In-app `LazyColumn` virtualized data grid (`SheetDataGrid`).
+- Smoothly scrolls and searches across tables with 15,000 to 100,000+ rows without Android ANR (Application Not Responding) crashes.
+- Sticky column headers with column letters and role badges.
+
+### 5. Supported Symbologies
+- **1D Barcodes:** EAN-13, EAN-8, UPC-A, UPC-E, Code 128, Code 39, Code 93, Codabar, ITF.
+- **2D Codes:** QR Code, Data Matrix.
+
+## Comparisons & Alternatives
+
+### SheetScan vs. Orca Scan
+- **Orca Scan:** Charges steep per-device monthly subscription fees, caps free record history, and locks direct two-way Google Sheets sync behind higher paid tiers.
+- **SheetScan:** Connects directly to Google Sheets via your own Google Account (OAuth). Data remains strictly in your Google Drive. No per-seat cloud SaaS fees.
+
+### SheetScan vs. AppSheet
+- **AppSheet:** Complex setup, requires configuring actions, views, and data structures. Can lag when opening large sheets on mobile devices.
+- **SheetScan:** Ready in 60 seconds. Connect your sheet, pick your barcode column, and start scanning immediately with purpose-built camera performance.
+
+### SheetScan vs. USB/Bluetooth Hardware Scanners
+- Hardware scanners act as basic keyboard wedges: they can only type text where the cursor is currently placed, cannot look up rows on mobile, and cannot do auto-increment without custom Google Apps Script. SheetScan runs directly on standard Android smartphones with zero extra hardware.
+
+## Documentation & Guides
+- [How to Scan Barcodes into Google Sheets](https://scan2sheets.app/how-to-scan-barcodes-into-google-sheets.html): Complete step-by-step setup guide for beginners.
+- [Free Inventory Spreadsheet Template](https://scan2sheets.app/google-sheets-barcode-inventory-template.html): Ready-to-copy inventory template with formulas.
+- [QR Code Attendance Tracker](https://scan2sheets.app/qr-code-attendance-google-sheets.html): Guide to tracking attendance, check-ins, and timestamps with QR codes.
+- [Full LLM Ingestion Document](https://scan2sheets.app/llms-full.txt): Comprehensive text documentation for AI agents and search indexing.
+- [Privacy Policy](https://scan2sheets.app/privacy.html): Full disclosure on OAuth security, Google user data handling, and local storage.

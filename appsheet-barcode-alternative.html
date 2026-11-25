@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simpler AppSheet Alternative for Barcode Scanning into Google Sheets (2026) | SheetScan</title>
+  <meta name="description" content="Tired of building actions, slices, and formulas in AppSheet just to scan barcodes into Google Sheets? SheetScan connects in 30 seconds with native Auto +1 and offline cache." />
+  <meta name="theme-color" content="#0F0C1A" />
+  <meta name="google-site-verification" content="l_DCAVC1ZjNH4PBwGRF1wwJ4GbD1l4B45DbPYoK3d3U" />
+
+  <link rel="canonical" href="https://scan2sheets.app/appsheet-barcode-alternative" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://scan2sheets.app/appsheet-barcode-alternative" />
+  <meta property="og:site_name" content="SheetScan / Scan2Sheets" />
+  <meta property="og:title" content="Simpler AppSheet Alternative for Barcode Scanning (2026) | SheetScan" />
+  <meta property="og:description" content="Skip hours of AppSheet no-code configuration. Scan barcodes into Google Sheets in 30 seconds with hands-free Auto +1 and 100k-row offline lookups." />
+  <meta property="og:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Simpler AppSheet Alternative for Barcode Scanning (2026) | SheetScan" />
+  <meta name="twitter:description" content="Ready-to-use Android barcode scanner for Google Sheets — no AppSheet expressions, no slow syncs." />
+  <meta name="twitter:image" content="https://scan2sheets.app/assets/feature-graphic.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68PBXWT4SV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68PBXWT4SV');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why use SheetScan instead of AppSheet for barcode inventory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AppSheet requires building views, forms, and expressions to handle barcode lookups and quantity increments, and can feel slow on large spreadsheets. SheetScan is purpose-built for barcode scanning: connect any Google Sheet in 30 seconds, get sub-10ms local lookups across 100,000+ rows, and use hands-free Auto +1 counting out of the box."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SheetScan require writing Google Apps Script or AppSheet expressions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. SheetScan automatically maps your spreadsheet columns with SmartSchemaBuilder and supports built-in Auto +1 incrementing and Auto-Timestamps without writing any formulas or scripts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast is SheetScan on large Google Sheets compared to AppSheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SheetScan caches up to 100,000 rows locally in Android Room SQLite with a virtualized table viewer, enabling sub-10ms barcode lookups even offline."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-dark: #0F0C1A;
+      --bg-card: #181424;
+      --surface-variant: #231D38;
+      --border-color: #2C2642;
+      --border-accent: rgba(179, 157, 250, 0.3);
+      --primary: #B39DFA;
+      --primary-accent: #7B52E8;
+      --secondary-green: #7EC891;
+      --text-main: #FAFAFF;
+      --text-muted: #C9C4D4;
+      --text-subtle: #8E88A0;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-main); line-height: 1.65; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1020px; margin: 0 auto; padding: 0 1.5rem; }
+    header { border-bottom: 1px solid var(--border-color); background: rgba(15, 12, 26, 0.9); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 20; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 0.7rem; font-weight: 800; font-size: 1.2rem; color: var(--text-main); }
+    .logo img { width: 34px; height: 34px; border-radius: 9px; }
+    .nav-cta { background: linear-gradient(135deg, var(--primary-accent), #9B72FF); color: #fff; padding: 0.65rem 1.25rem; border-radius: 12px; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .nav-cta:hover { text-decoration: none; opacity: 0.94; }
+    .hero { padding: 4.5rem 0 2.5rem; text-align: center; }
+    .badge { display: inline-block; background: rgba(123, 82, 232, 0.2); border: 1px solid var(--border-accent); color: var(--primary); padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; font-weight: 800; margin-bottom: 1.2rem; }
+    .hero p { color: var(--text-muted); font-size: 1.12rem; max-width: 720px; margin: 0 auto 2rem; }
+    .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-secondary { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.75rem 1.35rem; border-radius: 12px; font-weight: 600; }
+    section { padding: 2.5rem 0; }
+    h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 1.2rem; }
+    .table-wrap { overflow-x: auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 18px; }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; }
+    th, td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+    th { background: var(--surface-variant); color: var(--text-main); font-weight: 700; }
+    tr:last-child td { border-bottom: none; }
+    .win { color: var(--secondary-green); font-weight: 600; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+    .card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; color: var(--primary); }
+    .card ul { padding-left: 1.2rem; color: var(--text-muted); }
+    .card li { margin-bottom: 0.5rem; }
+    .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; border: 1px solid var(--border-color); background: #000; }
+    .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem 1.4rem; margin-bottom: 0.9rem; }
+    .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.45rem; color: var(--text-main); }
+    .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+    footer { border-top: 1px solid var(--border-color); padding: 2.5rem 0; margin-top: 2rem; color: var(--text-subtle); font-size: 0.9rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+    .foot-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">
+        <img src="/assets/app-icon.png" alt="SheetScan icon" />
+        <span>SheetScan</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Dappsheet_alt%26utm_content%3Dnav_cta" data-placement="nav_cta" target="_blank" rel="noopener noreferrer" class="nav-cta">Get SheetScan on Google Play</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="badge">Comparison • 2026</span>
+      <h1>SheetScan vs AppSheet: Ready-to-Use Barcode Scanner for Google Sheets</h1>
+      <p>AppSheet is a powerful no-code platform, but building a fast barcode stocktake app in it takes hours of expressions, actions, and views. <strong>SheetScan</strong> works out of the box in 30 seconds.</p>
+      <div class="cta-row">
+        <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Dappsheet_alt%26utm_content%3Dhero_cta" data-placement="hero_cta" target="_blank" rel="noopener noreferrer" class="nav-cta" style="padding:0.85rem 1.6rem; font-size:1rem;">Start Scanning Free on Android</a>
+        <a href="/how-to-scan-barcodes-into-google-sheets" class="btn-secondary">30-Second Setup Guide</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Side-by-Side Comparison</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>SheetScan (Scan2Sheets)</th>
+              <th>Google AppSheet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Time to First Scan</strong></td>
+              <td class="win">~30 seconds (1-tap templates or auto-schema)</td>
+              <td>1–4 hours configuring tables, slices, views &amp; actions</td>
+            </tr>
+            <tr>
+              <td><strong>Continuous Auto +1 Stock Count</strong></td>
+              <td class="win">Native hands-free toggle (camera never closes)</td>
+              <td>Requires form auto-reopen + custom actions / formulas</td>
+            </tr>
+            <tr>
+              <td><strong>Scanner Speed &amp; UX</strong></td>
+              <td class="win">Native CameraX + ML Kit with instant haptic beep</td>
+              <td>Form-based modal scanner; taps required between items</td>
+            </tr>
+            <tr>
+              <td><strong>Large Sheet Performance</strong></td>
+              <td class="win">100,000+ rows cached locally (&lt;10ms lookup)</td>
+              <td>Sync slows down on large sheets unless partitioned</td>
+            </tr>
+            <tr>
+              <td><strong>Offline Reliability</strong></td>
+              <td class="win">Offline-first SQLite queue with zero-data-loss merge</td>
+              <td>Offline caching requires manual configuration</td>
+            </tr>
+            <tr>
+              <td><strong>Pricing</strong></td>
+              <td class="win">Free (20 scans/day) • Pro $4.99/mo or $29.99/yr</td>
+              <td>$5–$10/user/month (Core/Enterprise) for deployed apps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Which One Should You Choose?</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Choose SheetScan if...</h3>
+          <ul>
+            <li>You just need to <strong>scan barcodes &amp; QR codes into Google Sheets</strong> fast without becoming a no-code developer.</li>
+            <li>You want <strong>hands-free continuous +1 counting</strong> for shelf stocktakes and warehouse receiving.</li>
+            <li>Your spreadsheet has <strong>10,000–100,000 rows</strong> and you need instant offline search.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Choose AppSheet if...</h3>
+          <ul>
+            <li>You need complex multi-table relational apps, approval workflows, PDF invoice generation, or custom dashboards.</li>
+            <li>You need both iOS and Web app interfaces with role-based security filters.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>See SheetScan in Action (42s Demo)</h2>
+      <div class="video-box">
+        <iframe src="https://www.youtube-nocookie.com/embed/fHZtGRuw0dE?rel=0" title="SheetScan Barcode to Google Sheets Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Do I have to change my Google Sheet layout to use SheetScan?</h3>
+        <p>No. SheetScan adapts to any existing spreadsheet headers. Just pick your Barcode column, Quantity column, and optional Auto-Timestamp column — or create a ready-to-use sheet in 1 tap.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I use SheetScan for free?</h3>
+        <p>Yes. SheetScan includes 20 free scans every day (reset at midnight UTC) and a built-in offline Demo Mode so you can test the scanner speed before connecting your Google account.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>SheetScan / Scan2Sheets &copy; 2026</div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/orca-scan-alternative">vs Orca Scan</a>
+      <a href="/how-to-scan-barcodes-into-google-sheets">How to Scan Guide</a>
+      <a href="/google-sheets-barcode-inventory-template">Inventory Template</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href*="play.google.com"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_google_play', { event_category: 'conversion', event_label: window.location.pathname, button_placement: link.getAttribute('data-placement') || 'cta' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

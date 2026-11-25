@@ -391,4 +391,16 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/privacy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/privacy" />
   </url>
+  <url>
+    <loc>https://scan2sheets.app/orca-scan-alternative</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/appsheet-barcode-alternative</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

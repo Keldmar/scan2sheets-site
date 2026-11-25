@@ -56,5 +56,7 @@ SheetScan replaces slow manual data entry, paper-based stock takes, and expensiv
 - [How to Scan Barcodes into Google Sheets](https://scan2sheets.app/how-to-scan-barcodes-into-google-sheets): Complete step-by-step setup guide for beginners.
 - [Free Inventory Spreadsheet Template](https://scan2sheets.app/google-sheets-barcode-inventory-template): Ready-to-copy inventory template with formulas.
 - [QR Code Attendance Tracker](https://scan2sheets.app/qr-code-attendance-google-sheets): Guide to tracking attendance, check-ins, and timestamps with QR codes.
+- [SheetScan vs Orca Scan](https://scan2sheets.app/orca-scan-alternative): Direct comparison of pricing, privacy, offline cache, and Google Sheets sync.
+- [SheetScan vs AppSheet](https://scan2sheets.app/appsheet-barcode-alternative): Why SheetScan is a faster 30-second alternative to AppSheet for barcode inventory.
 - [Full LLM Ingestion Document](https://scan2sheets.app/llms-full.txt): Comprehensive text documentation for AI agents and search indexing.
 - [Privacy Policy](https://scan2sheets.app/privacy): Full disclosure on OAuth security, Google user data handling, and local storage.

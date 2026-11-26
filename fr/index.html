@@ -262,6 +262,7 @@
       gap: 1rem;
     }
 
+    .lang-switcher select option { background: #181424; color: #FAFAFF; }
     .lang-switcher {
       display: flex;
       align-items: center;
@@ -802,7 +803,7 @@
         </ul>
 
         <div class="nav-right">
-          <div class="lang-switcher">🌐 <a href="/">EN</a><a href="/es/">ES</a><a href="/pt/">PT</a><a href="/pl/">PL</a><a href="/uk/">UK</a><a href="/de/">DE</a><a href="/fr/" class="active">FR</a><a href="/it/">IT</a><a href="/nl/">NL</a><a href="/tr/">TR</a><a href="/id/">ID</a></div>
+          <div class="lang-switcher">🌐 <select aria-label="Language" onchange="if(this.value)window.location.href=this.value" style="background:transparent;color:var(--text-main);border:none;font:inherit;font-weight:600;cursor:pointer;outline:none;"><option value="/">EN · English</option><option value="/es/">ES · Español</option><option value="/pt/">PT · Português</option><option value="/pl/">PL · Polski</option><option value="/uk/">UK · Українська</option><option value="/de/">DE · Deutsch</option><option value="/fr/" selected>FR · Français</option><option value="/it/">IT · Italiano</option><option value="/nl/">NL · Nederlands</option><option value="/tr/">TR · Türkçe</option><option value="/id/">ID · Indonesia</option></select></div>
           <a href="https://play.google.com/store/apps/details?id=com.sheetscan.app&amp;referrer=utm_source%3Dscan2sheets_site%26utm_medium%3Dweb%26utm_campaign%3Dfr_home%26utm_content%3Dheader_nav" data-placement="header_nav" target="_blank" rel="noopener noreferrer" class="nav-cta">
             <span>Installer l'App</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

@@ -12,6 +12,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -25,6 +30,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -38,6 +48,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -51,6 +66,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -64,6 +84,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -77,6 +102,11 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
   <url>
@@ -402,5 +432,95 @@
     <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/fr/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/it/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/nl/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/tr/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
+  </url>
+  <url>
+    <loc>https://scan2sheets.app/id/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scan2sheets.app/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://scan2sheets.app/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scan2sheets.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://scan2sheets.app/pl/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://scan2sheets.app/uk/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://scan2sheets.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scan2sheets.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://scan2sheets.app/it/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://scan2sheets.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scan2sheets.app/tr/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://scan2sheets.app/id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scan2sheets.app/" />
   </url>
 </urlset>
